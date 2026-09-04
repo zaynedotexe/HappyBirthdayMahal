@@ -1,29 +1,17 @@
-import { motion } from 'framer-motion'
-
 export default function Memories({ memories, onSelectPhoto }) {
   return (
     <section className="section" id="memories">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 28 }}
-        >
+        <div style={{ textAlign: 'center', marginBottom: 28 }}>
           <span className="section-label">📸 Our Memories</span>
           <h2 className="font-display" style={{ fontSize: 'clamp(28px, 5vw, 40px)', fontWeight: 700, marginTop: 14, color: '#1f0a14' }}>Our Little Memories 📸❤️</h2>
           <p style={{ color: '#7a4a5a', marginTop: 8, maxWidth: 560, marginInline: 'auto', fontSize: 15 }}>Every photo has a story — and every story has you. Tap any memory to see it bigger.</p>
-        </motion.div>
+        </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 18 }}>
           {memories.map((m, i) => (
-            <motion.article
+            <article
               key={m.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ delay: i * 0.06, duration: 0.6, ease: [0.22,1,0.36,1] }}
-              whileHover={{ y: -6, scale: 1.01 }}
               onClick={() => onSelectPhoto?.(i)}
               style={{
                 background: 'white',
@@ -49,7 +37,7 @@ export default function Memories({ memories, onSelectPhoto }) {
                   <span style={{ fontFamily: 'Caveat, cursive', fontSize: 15, color: '#7a2340', fontWeight: 600 }}>{m.funnyCaption}</span>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
