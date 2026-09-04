@@ -15,7 +15,7 @@ import Reasons from './components/Reasons.jsx'
 import InteractiveQuestion from './components/InteractiveQuestion.jsx'
 import BirthdaySurprise from './components/BirthdaySurprise.jsx'
 import MusicPlayer from './components/MusicPlayer.jsx'
-import SyncedLyrics from './components/SyncedLyrics.jsx'
+import Synthesizer from './components/Synthesizer.jsx'
 import FinalSection from './components/FinalSection.jsx'
 
 export default function App() {
@@ -94,7 +94,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <SyncedLyrics shouldPlay={entered} isPlaying={musicPlaying} currentTime={musicTime} />
+      <Synthesizer shouldPlay={entered} isPlaying={musicPlaying} currentTime={musicTime} />
 
       <div aria-hidden style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden', opacity: entered ? 1 : 0, transition: 'opacity 1s ease' }}>
         {[...Array(10)].map((_, i) => (
