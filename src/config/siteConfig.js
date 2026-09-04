@@ -21,7 +21,7 @@ const siteConfig = {
       title: "A Little Birthday Message For You 💌",
       paragraphs: [
         "Happy birthday, Mahal. I just want you to know how grateful I am that you came into my life. Thank you for all the laughs, kakulitan, random conversations, memories, and all the moments that somehow became special just because they were with you.",
-        "I hope your birthday is filled with happiness, love, and everything you deserve. You deserve the softest love, the loudest laughs, and the warmest hugs — lahat yun ibibigay ko sa'yo.",
+        "I hope your birthday is filled with happiness, love, and everything you deserve. You deserve the softest love, the loudest laughs, and the warmest hugs lahat yun ibibigay ko sa'yo.",
         "And syempre, sana dumami pa yung kabadingan at kakulitan natin. 😭❤️ More tawanan, more asaran, more memories together. I wouldn't want to do this life with anyone else.",
       ],
     },
@@ -31,7 +31,7 @@ const siteConfig = {
       content: [
         "Mahal,",
         "Happy birthday. I don't think I tell you enough how much you mean to me, so let me try here.",
-        "Thank you for being you — for your kakulitan that always makes me laugh, for your sweetness that always makes me soft, for your kabadingan that makes every day feel lighter. Life before you was okay, but life with you is so much more colorful, chaotic, and beautiful.",
+        "Thank you for being you for your kakulitan that always makes me laugh, for your sweetness that always makes me soft, for your kabadingan that makes every day feel lighter. Life before you was okay, but life with you is so much more colorful, chaotic, and beautiful.",
         "I love the way you laugh, the way you get excited over small things, the way you can turn an ordinary day into a core memory without even trying. You have this magic na kahit pagod ako, isang message mo lang, okay na ulit ako.",
         "On your birthday, my wish for you is simple: May you always feel how loved you are — not just today, but every day. May you chase your dreams nang walang takot, may you laugh until your cheeks hurt, and may you never forget that nandito lang ako, always cheering for you, always loving you.",
         "Thank you for existing, Mahal. Thank you for letting me love you.",
@@ -60,7 +60,7 @@ const siteConfig = {
       title: "HAPPY BIRTHDAY, MAHAL! 🎂❤️",
       subtitle: "I hope you know how loved and appreciated you are.",
       description:
-        "You are my favorite hello and my hardest goodbye — pero today, it's all hello, all celebration, all you. Mahal na mahal kita, sobra. Enjoy your day, my love! 🎉",
+        "You are my favorite hello and my hardest goodbye pero today, it's all hello, all celebration, all you. Mahal na mahal kita, sobra. Enjoy your day, my love! 🎉",
     },
   },
 
@@ -71,7 +71,7 @@ const siteConfig = {
       caption: "My hijab princess 🥺❤️",
       date: "2026 • First memory",
       description:
-        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile — simple lang pero you still slay so hard. My favorite pretty girl. 😭✨",
+        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile simple lang pero you still slay so hard. My favorite pretty girl. 😭✨",
       x: "5%",
       y: "12%",
       width: "200px",
@@ -88,7 +88,7 @@ const siteConfig = {
       caption: "Certified bading energy 😭🤪",
       date: "2026",
       description:
-        "Tongue out, eyes wide, pakiyot faces — your kabadingan is my favorite comedy show. Never change, my favorite bading! 🫶😂",
+        "Tongue out, eyes wide, pakiyot faces your kabadingan is my favorite comedy show. Never change, my favorite bading! 🫶😂",
       x: "78%",
       y: "10%",
       width: "185px",
@@ -140,7 +140,7 @@ const siteConfig = {
       caption: "My glasses cutie 🌟🤓",
       date: "Today • Your birthday",
       description:
-        "Glasses on, pout on, starry background — you still shine the brightest. My cutie today and always. Cheers to your birthday! 🎂❤️",
+        "Glasses on, pout on, starry background you still shine the brightest. My cutie today and always. Cheers to your birthday! 🎂❤️",
       x: "12%",
       y: "75%",
       width: "170px",
@@ -157,7 +157,7 @@ const siteConfig = {
       caption: "My cap baddie 😎🫶",
       date: "2026 • Late night talks",
       description:
-        "Cap on, pout mode on — still my favorite bading. Late-night starry vibes hit different with you. 3am talks forever? 😭❤️",
+        "Cap on, pout mode on still my favorite bading. Late-night starry vibes hit different with you. 3am talks forever? 😭❤️",
       x: "75%",
       y: "76%",
       width: "180px",
@@ -177,7 +177,7 @@ const siteConfig = {
       title: "My hijab princess 🥺❤️",
       date: "2026",
       description:
-        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile — simple lang pero you still slay so hard. My favorite pretty girl.",
+        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile simple lang pero you still slay so hard. My favorite pretty girl.",
       funnyCaption: "Hijab slay, no effort. 😭✨",
     },
     {
@@ -186,7 +186,7 @@ const siteConfig = {
       title: "Certified bading energy 😭🤪",
       date: "2026",
       description:
-        "Tongue out, eyes wide, pakiyot faces — your kabadingan is my favorite comedy show. Never change, my favorite bading!",
+        "Tongue out, eyes wide, pakiyot faces your kabadingan is my favorite comedy show. Never change, my favorite bading!",
       funnyCaption: "Bading since birth, certified. 😂",
     },
     {
@@ -213,7 +213,7 @@ const siteConfig = {
       title: "My glasses cutie 🌟🤓",
       date: "2026",
       description:
-        "Glasses on, pout on, starry background — you still shine the brightest. My cutie today and always.",
+        "Glasses on, pout on, starry background you still shine the brightest. My cutie today and always.",
       funnyCaption: "Starry cutie unlocked. 🌟",
     },
     {
@@ -307,7 +307,7 @@ const siteConfig = {
     "Salamat sa lahat ng kakulitan natin. More to come! 🫶",
     "More tawanan, more memories, more kabadingan! 🎉",
     "Birthday mo kaya pagbibigyan kita today. Pero bukas bading ka ulit! 😭",
-    "Certified bading since birth — and I love it! 😂❤️",
+    "Certified bading since birth and I love it! 😂❤️",
   ],
 
   interactiveQuestion: {
