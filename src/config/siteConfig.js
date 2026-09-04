@@ -175,7 +175,7 @@ const siteConfig = {
       id: 1,
       image: BASE + "photos/photo1.jpg",
       title: "My hijab princess 🥺❤️",
-      date: "2026 • First memory",
+      date: "2026",
       description:
         "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile — simple lang pero you still slay so hard. My favorite pretty girl.",
       funnyCaption: "Hijab slay, no effort. 😭✨",
@@ -193,7 +193,7 @@ const siteConfig = {
       id: 3,
       image: BASE + "photos/photo3.jpg",
       title: "Your pretty wink 🥺✨",
-      date: "2026 • Random day",
+      date: "2026",
       description:
         "That soft smile and little wink? Instant kilig. You're so pretty, Mahal, sobra. Automatic +1000 happiness.",
       funnyCaption: "One wink, I'm done. 🥺",
@@ -211,7 +211,7 @@ const siteConfig = {
       id: 5,
       image: BASE + "photos/photo5.jpg",
       title: "My glasses cutie 🌟🤓",
-      date: "Today • Your birthday",
+      date: "2026",
       description:
         "Glasses on, pout on, starry background — you still shine the brightest. My cutie today and always.",
       funnyCaption: "Starry cutie unlocked. 🌟",
@@ -220,7 +220,7 @@ const siteConfig = {
       id: 6,
       image: BASE + "photos/photo6.jpg",
       title: "My cap baddie 😎🫶",
-      date: "2026 • Late night talks",
+      date: "Today • Your birthday",
       description:
         "Cap on, pout mode on — still my favorite bading. Late-night starry vibes hit different with you.",
       funnyCaption: "Cap on, still pretty. 😎",
