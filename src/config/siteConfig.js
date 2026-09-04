@@ -120,10 +120,10 @@ const siteConfig = {
     {
       id: 4,
       image: BASE + "photos/photo4.jpg",
-      caption: "Simply you, no filter 💖",
+      caption: "Simply you 💖",
       date: "2026",
       description:
-        "No filter, no effort — you just glow differently. Natural beauty, Mahal. Ang ganda mo palagi. ✨🥺",
+        "You just glow differently. Natural beauty, Mahal. Ang ganda mo palagi. ✨🥺",
       x: "4%",
       y: "55%",
       width: "190px",
@@ -201,11 +201,11 @@ const siteConfig = {
     {
       id: 4,
       image: BASE + "photos/photo4.jpg",
-      title: "Simply you, no filter 💖",
+      title: "Simply you 💖",
       date: "2026",
       description:
-        "No filter, no effort — you just glow differently. Natural beauty, Mahal. Ang ganda mo palagi.",
-      funnyCaption: "No filter needed, glow natural. ✨",
+        "You just glow differently. Natural beauty, Mahal. Ang ganda mo palagi.",
+      funnyCaption: "Natural glow, always pretty. ✨",
     },
     {
       id: 5,
