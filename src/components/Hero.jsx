@@ -71,7 +71,7 @@ export default function Hero({ config }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 16, paddingTop: 16, borderTop: '1px solid #ffe4e6' }}>
             <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=100&auto=format&fit=crop&q=60" alt="" style={{ width: 36, height: 36, borderRadius: 999, objectFit: 'cover', border: '2px solid white', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }} />
             <div style={{ fontSize: 12.5, lineHeight: 1.3 }}>
-              <div style={{ fontWeight: 800, color: '#1f0a14' }}>From someone who loves you endlessly</div>
+              <div style={{ fontWeight: 800, color: '#1f0a14' }}>From Mahal ❤️</div>
               <div style={{ color: '#9a6a7a', display: 'flex', alignItems: 'center', gap: 4 }}><Sparkles size={12} /> Always you, always us</div>
             </div>
           </div>
