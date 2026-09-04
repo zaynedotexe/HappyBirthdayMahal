@@ -315,7 +315,7 @@ const siteConfig = {
   // --- Bading Humor ---
   badingMessages: [
     "Happy birthday, bading! 😭❤️",
-    "Another year of kabadingan unlocked! 🔓😭",
+    "One Month of kabadingan unlocked! 🔓😭",
     "Hindi ka na tatanda, mas magiging bading ka lang. 😭✨",
     "My favorite bading ever 🫵😭❤️",
     "Mahal kita kahit bading ka. Charot, MAS mahal kita KASI bading ka! 😭",
