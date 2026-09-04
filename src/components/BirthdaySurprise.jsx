@@ -65,7 +65,7 @@ export default function BirthdaySurprise({ data, onCelebrate }) {
               }}
             >
               <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 700px 500px at 50% -10%, rgba(236,72,153,0.22) 0%, transparent 62%), radial-gradient(ellipse 500px 400px at 90% 100%, rgba(225,29,72,0.16) 0%, transparent 60%)' }} />
-              {/* confetti burst overlay inside card */}
+
               <div aria-hidden style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
                 {[...Array(22)].map((_, i) => (
                   <motion.span

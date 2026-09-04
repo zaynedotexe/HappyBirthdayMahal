@@ -22,7 +22,7 @@ export default function OpeningScreen({ config, onOpen, isOpen }) {
           'radial-gradient(ellipse 900px 700px at 20% 0%, #ffe4e6 0%, transparent 60%), radial-gradient(ellipse 800px 600px at 85% 10%, #fce7f3 0%, transparent 62%), radial-gradient(ellipse 700px 500px at 50% 100%, #fff1f2 0%, transparent 60%), linear-gradient(180deg, #fffafb 0%, #fff1f2 55%, #ffe4e6 100%)',
       }}
     >
-      {/* floating hearts bg */}
+
       <div aria-hidden style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
         {[...Array(14)].map((_, i) => (
           <span
@@ -40,7 +40,7 @@ export default function OpeningScreen({ config, onOpen, isOpen }) {
             {['💗','💖','💝','🌸'][i % 4]}
           </span>
         ))}
-        {/* soft orbs */}
+
         <div style={{ position: 'absolute', width: 520, height: 520, borderRadius: 999, background: 'radial-gradient(circle, rgba(225,29,72,0.08) 0%, transparent 70%)', top: -120, left: -80 }} />
         <div style={{ position: 'absolute', width: 640, height: 640, borderRadius: 999, background: 'radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)', bottom: -200, right: -120 }} />
       </div>
@@ -55,7 +55,7 @@ export default function OpeningScreen({ config, onOpen, isOpen }) {
           textAlign: 'center',
         }}
       >
-        {/* card */}
+
         <div
           className="glass"
           style={{
@@ -65,7 +65,7 @@ export default function OpeningScreen({ config, onOpen, isOpen }) {
             overflow: 'hidden',
           }}
         >
-          {/* top accent line */}
+
           <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 140, height: 3, background: 'linear-gradient(90deg, transparent, #f43f5e, transparent)', borderRadius: 999, opacity: 0.6 }} />
 
           <motion.div
@@ -158,7 +158,6 @@ export default function OpeningScreen({ config, onOpen, isOpen }) {
             <Heart size={12} fill="#f43f5e" color="#f43f5e" /> made with all my kabadingan & love
           </p>
 
-          {/* bottom glow */}
           <div style={{ position: 'absolute', bottom: -40, left: '50%', transform: 'translateX(-50%)', width: 320, height: 120, background: 'radial-gradient(ellipse, rgba(225,29,72,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />
         </div>
 

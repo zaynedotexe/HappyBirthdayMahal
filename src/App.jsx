@@ -23,7 +23,6 @@ export default function App() {
   const [celebrating, setCelebrating] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
 
-  // prevent scroll when not entered
   useEffect(() => {
     if (!entered) document.body.style.overflow = 'hidden'
     else document.body.style.overflow = ''
@@ -31,7 +30,7 @@ export default function App() {
 
   const handleEnter = () => {
     setEntered(true)
-    // small celebratory confetti after entering
+
     setTimeout(() => {
       setShowConfetti(true)
       setTimeout(() => setShowConfetti(false), 3400)
@@ -49,14 +48,13 @@ export default function App() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
-      {/* Opening */}
+
       <AnimatePresence>
         {!entered && (
           <OpeningScreen config={siteConfig} onOpen={handleEnter} isOpen={entered} />
         )}
       </AnimatePresence>
 
-      {/* Global confetti */}
       <AnimatePresence>
         {showConfetti && (
           <div aria-hidden style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 70, overflow: 'hidden' }}>
@@ -93,7 +91,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Soft floating hearts background (always) */}
       <div aria-hidden style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden', opacity: entered ? 1 : 0, transition: 'opacity 1s ease' }}>
         {[...Array(10)].map((_, i) => (
           <span
@@ -113,16 +110,15 @@ export default function App() {
         ))}
       </div>
 
-      {/* Main content */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: entered ? 1 : 0 }}
         transition={{ duration: 0.9, ease: [0.22,1,0.36,1] }}
         style={{ position: 'relative', zIndex: 1, pointerEvents: entered ? 'auto' : 'none' }}
       >
-        {/* Hero wrapper with FloatingPhotos positioned around it */}
+
         <div style={{ position: 'relative', overflow: 'visible' }}>
-          {/* Desktop floating photos overlay */}
+
           <div className="floating-desktop-wrap" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 2 }}>
             <FloatingPhotos photos={siteConfig.photos} onSelect={(i) => setViewerIndex(i)} desktopOnly />
           </div>
@@ -132,7 +128,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Mobile horizontal strip - visible only on mobile */}
         <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <div className="mobile-strip">
             <div style={{ display: 'flex', gap: 14, overflowX: 'auto', padding: '6px 4px 16px', scrollSnapType: 'x mandatory', scrollbarWidth: 'none' }}>
@@ -188,7 +183,6 @@ export default function App() {
         <BirthdaySurprise data={siteConfig.messages.surprise} onCelebrate={handleCelebrate} />
         <FinalSection data={siteConfig.messages.finalMessage} />
 
-        {/* bottom nav dots */}
         <nav
           aria-label="Section navigation"
           style={{
@@ -234,7 +228,6 @@ export default function App() {
       <PhotoViewer photos={siteConfig.photos} index={viewerIndex} onClose={() => setViewerIndex(null)} onNext={nextPhoto} onPrev={prevPhoto} />
       <MusicPlayer shouldPlay={entered} />
 
-      {/* subtle vignette when celebrating */}
       <AnimatePresence>
         {celebrating && showConfetti && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ position: 'fixed', inset: 0, background: 'radial-gradient(ellipse 900px 700px at 50% 30%, rgba(225,29,72,0.08) 0%, transparent 62%)', pointerEvents: 'none', zIndex: 65 }} />

@@ -19,9 +19,8 @@ export default function LoveLetter({ data }) {
           <p className="font-serif" style={{ fontStyle: 'italic', color: '#7a4a5a', marginTop: 8, fontSize: 16 }}>{data.preview}</p>
         </motion.div>
 
-        {/* Envelope / Letter */}
         <div style={{ maxWidth: 640, margin: '0 auto', position: 'relative' }}>
-          {/* envelope back */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +37,7 @@ export default function LoveLetter({ data }) {
               overflow: 'hidden',
             }}
           >
-            {/* envelope flap */}
+
             <AnimatePresence>
               {!open && (
                 <motion.div
@@ -155,18 +154,15 @@ export default function LoveLetter({ data }) {
                   </motion.div>
                 </div>
 
-                {/* paper tape */}
                 <div style={{ position: 'absolute', top: -10, right: 32, width: 64, height: 18, background: 'rgba(255,255,255,0.9)', border: '1px solid #ffe4e6', transform: 'rotate(2deg)', boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }} />
               </motion.div>
             )}
 
-            {/* glow when open */}
             {open && (
               <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse 600px 300px at 50% 0%, rgba(225,29,72,0.06) 0%, transparent 70%)' }} />
             )}
           </motion.div>
 
-          {/* floating hearts when open */}
           <AnimatePresence>
             {open && (
               <motion.div

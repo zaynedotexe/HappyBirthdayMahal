@@ -67,7 +67,7 @@ export default function MusicPlayer({ shouldPlay }) {
         src={cfg.source}
         preload="none"
         onError={() => {
-          // fallback to CDN
+
           if (audioRef.current && cfg.fallback && audioRef.current.src !== cfg.fallback) {
             audioRef.current.src = cfg.fallback
             audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setFailed(true))

@@ -38,7 +38,7 @@ export default function PhotoViewer({ photos, index, onClose, onNext, onPrev }) 
             padding: '20px',
           }}
         >
-          {/* backdrop */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -89,7 +89,6 @@ export default function PhotoViewer({ photos, index, onClose, onNext, onPrev }) 
               <X size={18} color="#3f1020" />
             </button>
 
-            {/* arrows */}
             <button
               onClick={onPrev}
               aria-label="Previous photo"

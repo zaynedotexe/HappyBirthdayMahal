@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Heart } from 'lucide-react'
 
 export default function InteractiveQuestion({ data }) {
-  const [phase, setPhase] = useState(0) // 0 question, 1 wrong, 2 reveal
+  const [phase, setPhase] = useState(0)
   if (!data?.enabled) return null
 
   return (
@@ -16,7 +16,7 @@ export default function InteractiveQuestion({ data }) {
           className="glass"
           style={{ maxWidth: 640, margin: '0 auto', borderRadius: 28, padding: '34px 24px', position: 'relative', overflow: 'hidden' }}
         >
-          {/* glow */}
+
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 500px 300px at 50% 0%, rgba(225,29,72,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           <AnimatePresence mode="wait">
@@ -64,7 +64,7 @@ export default function InteractiveQuestion({ data }) {
 
             {phase === 2 && (
               <motion.div key="r" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                {/* burst */}
+
                 <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
                   {[...Array(18)].map((_, i) => (
                     <motion.span

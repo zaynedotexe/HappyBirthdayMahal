@@ -15,7 +15,7 @@ export default function Timeline({ items }) {
         </motion.div>
 
         <div style={{ maxWidth: 680, margin: '0 auto', position: 'relative', paddingLeft: 36 }}>
-          {/* vertical line */}
+
           <div style={{ position: 'absolute', left: 15, top: 8, bottom: 8, width: 2, background: 'linear-gradient(180deg, #fecdd3, #f9a8d4, #e11d48)', borderRadius: 999, opacity: 0.9 }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -36,7 +36,7 @@ export default function Timeline({ items }) {
                   boxShadow: it.highlight ? '0 16px 40px rgba(225,29,72,0.24)' : '0 10px 28px rgba(31,10,20,0.07)',
                 }}
               >
-                {/* dot */}
+
                 <span
                   style={{
                     position: 'absolute',

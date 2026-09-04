@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react'
 export default function FloatingPhotos({ photos, onSelect, desktopOnly = false }) {
   const containerRef = useRef(null)
 
-  // subtle parallax on mouse move (desktop)
   useEffect(() => {
     const el = containerRef.current
     if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -41,7 +40,7 @@ export default function FloatingPhotos({ photos, onSelect, desktopOnly = false }
 
   return (
     <>
-      {/* Desktop floating layer */}
+
       <div
         ref={containerRef}
         aria-hidden="false"
@@ -106,7 +105,7 @@ export default function FloatingPhotos({ photos, onSelect, desktopOnly = false }
                   {p.date && <span style={{ fontSize: 10.5, opacity: 0.88, letterSpacing: '0.06em', fontWeight: 600, textTransform: 'uppercase', marginTop: 2 }}>{p.date}</span>}
                 </div>
               )}
-              {/* heart deco */}
+
               <span
                 style={{
                   position: 'absolute',
@@ -130,7 +129,6 @@ export default function FloatingPhotos({ photos, onSelect, desktopOnly = false }
         ))}
       </div>
 
-      {/* Mobile horizontal scroll strip - only when not desktopOnly */}
       {!desktopOnly && (
         <div
           className="floating-photo-mobile"

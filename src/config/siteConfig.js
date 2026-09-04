@@ -1,17 +1,11 @@
-// ============================================================
-// CENTRAL CONFIGURATION - EDIT EVERYTHING HERE ❤️
-// This is the ONLY file you need to personalize the website
-// ============================================================
-
 const BASE = import.meta.env.BASE_URL || "/"
 
 const siteConfig = {
-  // --- Basic Info ---
+
   name: "Mahal",
   nickname: "Bading",
-  age: "", // optional, e.g. "22nd"
+  age: "",
 
-  // --- Birthday Hero ---
   birthday: {
     greeting: "Happy Birthday, Mahal! 🎂❤️",
     subtitle: "Happy birthday sa pinaka-bading kong mahal! 😭❤️",
@@ -22,7 +16,6 @@ const siteConfig = {
       "On this special day, I just want you to know how incredibly loved you are. Every laugh, every random conversation, every little kakulitan with you has become one of my favorite memories. Today, the whole world celebrates you — pero ako yung pinaka-masaya kasi ikaw yung Mahal ko. ✨",
   },
 
-  // --- Messages ---
   messages: {
     birthdayMessage: {
       title: "A Little Birthday Message For You 💌",
@@ -71,10 +64,6 @@ const siteConfig = {
     },
   },
 
-  // --- Floating Photos ---
-  // Add as many as you want. Just duplicate an object!
-  // Images should be placed in /public/photos/
-  // You can use Unsplash placeholders if you don't have photos yet
   photos: [
     {
       id: 1,
@@ -181,7 +170,6 @@ const siteConfig = {
     },
   ],
 
-  // --- Memories Grid ---
   memories: [
     {
       id: 1,
@@ -239,7 +227,6 @@ const siteConfig = {
     },
   ],
 
-  // --- Timeline ---
   timeline: [
     {
       year: "2026",
@@ -272,7 +259,6 @@ const siteConfig = {
     },
   ],
 
-  // --- Reasons I Love You ---
   reasons: [
     {
       title: "Your Kakulitan",
@@ -312,7 +298,6 @@ const siteConfig = {
     },
   ],
 
-  // --- Bading Humor ---
   badingMessages: [
     "Happy birthday, bading! 😭❤️",
     "One Month of kabadingan unlocked! 🔓😭",
@@ -325,7 +310,6 @@ const siteConfig = {
     "Certified bading since birth — and I love it! 😂❤️",
   ],
 
-  // --- Interactive Question ---
   interactiveQuestion: {
     enabled: true,
     question: "Mahal, do you know how much I love you?",
@@ -335,17 +319,15 @@ const siteConfig = {
     subReveal: "Infinity pa nga kulang eh. Mahal na mahal kita, sobra sobra. 🥺✨",
   },
 
-  // --- Music ---
   music: {
     enabled: true,
     source: "/music/birthday-song.mp3",
-    // fallback if no local file - uses a royalty-free romantic lo-fi via CDN placeholder
+
     fallback: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-114227.mp3",
     volume: 0.35,
     title: "Our Song ♡",
   },
 
-  // --- Theme ---
   theme: {
     primary: "#e11d48",
     primarySoft: "#fff1f2",
@@ -357,9 +339,8 @@ const siteConfig = {
     rose: "#ffe4e6",
   },
 
-  // --- Animation ---
   animation: {
-    floatingIntensity: 1, // 0.5 = subtle, 1 = normal, 1.5 = more
+    floatingIntensity: 1,
     enableParallax: true,
     confettiCount: 80,
   },

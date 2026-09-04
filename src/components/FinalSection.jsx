@@ -13,7 +13,7 @@ export default function FinalSection({ data }) {
         position: 'relative',
       }}
     >
-      {/* soft hearts bg */}
+
       <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', width: 600, height: 600, borderRadius: 999, background: 'radial-gradient(circle, rgba(225,29,72,0.06) 0%, transparent 70%)', top: -120, left: '10%' }} />
         <div style={{ position: 'absolute', width: 700, height: 500, borderRadius: 999, background: 'radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)', bottom: -100, right: -80 }} />
