@@ -15,6 +15,7 @@ import Reasons from './components/Reasons.jsx'
 import InteractiveQuestion from './components/InteractiveQuestion.jsx'
 import BirthdaySurprise from './components/BirthdaySurprise.jsx'
 import MusicPlayer from './components/MusicPlayer.jsx'
+import SyncedLyrics from './components/SyncedLyrics.jsx'
 import FinalSection from './components/FinalSection.jsx'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
   const [viewerIndex, setViewerIndex] = useState(null)
   const [celebrating, setCelebrating] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [musicPlaying, setMusicPlaying] = useState(false)
 
   useEffect(() => {
     if (!entered) document.body.style.overflow = 'hidden'
@@ -90,6 +92,8 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      <SyncedLyrics shouldPlay={entered} isPlaying={musicPlaying} />
 
       <div aria-hidden style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden', opacity: entered ? 1 : 0, transition: 'opacity 1s ease' }}>
         {[...Array(10)].map((_, i) => (
@@ -226,7 +230,7 @@ export default function App() {
       </motion.div>
 
       <PhotoViewer photos={siteConfig.photos} index={viewerIndex} onClose={() => setViewerIndex(null)} onNext={nextPhoto} onPrev={prevPhoto} />
-      <MusicPlayer shouldPlay={entered} />
+      <MusicPlayer shouldPlay={entered} onPlayingChange={setMusicPlaying} />
 
       <AnimatePresence>
         {celebrating && showConfetti && (

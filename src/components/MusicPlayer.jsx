@@ -13,12 +13,14 @@ function getYouTubeId(url) {
   return null
 }
 
-export default function MusicPlayer({ shouldPlay }) {
+export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
   const audioRef = useRef(null)
   const ytRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [failed, setFailed] = useState(false)
+
+  useEffect(() => { onPlayingChange?.(isPlaying) }, [isPlaying, onPlayingChange])
   const cfg = siteConfig.music
   const ytId = cfg.youtubeId || getYouTubeId(cfg.source)
   const isYT = !!ytId && (cfg.source?.includes('youtu') || cfg.youtubeId)
