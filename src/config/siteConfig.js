@@ -247,17 +247,17 @@ const siteConfig = {
   // --- Timeline ---
   timeline: [
     {
-      year: "2025",
+      year: "2026",
       title: "Where it all started ✨",
       description:
         "First memories, first tawanan, first time I realized you're special.",
       icon: "💫",
     },
     {
-      year: "2025",
+      year: "2026",
       title: "More kakulitan & kabadingan 😭",
       description:
-        "From random gala to late-night calls — we became each other's favorite notification.",
+        "From late-night calls — we became each other's favorite notification.",
       icon: "😂",
     },
     {
