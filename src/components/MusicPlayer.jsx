@@ -13,14 +13,16 @@ function getYouTubeId(url) {
   return null
 }
 
-export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
+export default function MusicPlayer({ shouldPlay, onPlayingChange, onTimeUpdate }) {
   const audioRef = useRef(null)
-  const ytRef = useRef(null)
+  const ytContainerRef = useRef(null)
+  const ytPlayerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [failed, setFailed] = useState(false)
 
   useEffect(() => { onPlayingChange?.(isPlaying) }, [isPlaying, onPlayingChange])
+
   const cfg = siteConfig.music
   const ytId = cfg.youtubeId || getYouTubeId(cfg.source)
   const isYT = !!ytId && (cfg.source?.includes('youtu') || cfg.youtubeId)
@@ -35,19 +37,105 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
   }, [cfg.volume, cfg.enabled, isYT])
 
   useEffect(() => {
-    if (!cfg.enabled || !shouldPlay) return
+    if (!isYT || !cfg.enabled) return
+    let cancelled = false
+    let timeInterval = null
+
+    function createPlayer() {
+      if (cancelled) return
+      if (!ytContainerRef.current) return
+      if (!window.YT || !window.YT.Player) return
+      if (ytPlayerRef.current) return
+      ytPlayerRef.current = new window.YT.Player(ytContainerRef.current, {
+        videoId: ytId,
+        width: '1',
+        height: '1',
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          loop: 1,
+          playlist: ytId,
+          enablejsapi: 1,
+          origin: window.location.origin,
+        },
+        events: {
+          onReady: (e) => {
+            e.target.setVolume((cfg.volume ?? 0.35) * 100)
+            if (shouldPlay) {
+              e.target.playVideo()
+              setIsPlaying(true)
+            }
+          },
+          onStateChange: (e) => {
+            if (e.data === window.YT.PlayerState.PLAYING) setIsPlaying(true)
+            if (e.data === window.YT.PlayerState.PAUSED) setIsPlaying(false)
+            if (e.data === window.YT.PlayerState.ENDED) {
+              e.target.seekTo(0)
+              e.target.playVideo()
+            }
+          },
+        },
+      })
+      timeInterval = setInterval(() => {
+        if (ytPlayerRef.current && ytPlayerRef.current.getCurrentTime) {
+          try {
+            const t = ytPlayerRef.current.getCurrentTime()
+            if (typeof t === 'number' && !isNaN(t)) onTimeUpdate?.(t)
+          } catch {}
+        }
+      }, 250)
+    }
+
+    if (!window.YT) {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      document.head.appendChild(tag)
+      window.onYouTubeIframeAPIReady = () => createPlayer()
+      const check = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(check)
+          createPlayer()
+        }
+      }, 300)
+      return () => {
+        cancelled = true
+        clearInterval(check)
+        if (timeInterval) clearInterval(timeInterval)
+      }
+    } else {
+      createPlayer()
+      return () => {
+        cancelled = true
+        if (timeInterval) clearInterval(timeInterval)
+      }
+    }
+  }, [isYT, cfg.enabled, ytId, cfg.volume, shouldPlay, onTimeUpdate])
+
+  useEffect(() => {
+    if (!cfg.enabled) return
     if (isYT) {
-      const t = setTimeout(() => {
-        sendYT('playVideo')
-        sendYT('setVolume', [(cfg.volume ?? 0.35) * 100])
-        if (isMuted) sendYT('mute')
-        else sendYT('unMute')
-        setIsPlaying(true)
-      }, 800)
-      return () => clearTimeout(t)
+      const p = ytPlayerRef.current
+      if (!p || !p.playVideo) return
+      if (shouldPlay) {
+        const t = setTimeout(() => {
+          try { p.playVideo(); setIsPlaying(true) } catch {}
+        }, 400)
+        return () => clearTimeout(t)
+      } else {
+        try { p.pauseVideo(); setIsPlaying(false) } catch {}
+      }
+      return
     }
     const audio = audioRef.current
     if (!audio) return
+    if (!shouldPlay) {
+      audio.pause()
+      setIsPlaying(false)
+      return
+    }
     const tryPlay = async () => {
       try {
         await audio.play()
@@ -58,23 +146,25 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
       }
     }
     tryPlay()
-  }, [shouldPlay, cfg.enabled, isYT, cfg.volume, isMuted])
+  }, [shouldPlay, cfg.enabled, isYT])
 
-  function sendYT(func, args = []) {
-    const iframe = ytRef.current
-    if (!iframe || !iframe.contentWindow) return
-    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args }), '*')
-  }
+  useEffect(() => {
+    if (isYT || !cfg.enabled) return
+    const audio = audioRef.current
+    if (!audio) return
+    const onTime = () => onTimeUpdate?.(audio.currentTime)
+    audio.addEventListener('timeupdate', onTime)
+    return () => audio.removeEventListener('timeupdate', onTime)
+  }, [isYT, cfg.enabled, onTimeUpdate])
 
   const togglePlay = async () => {
     if (isYT) {
+      const p = ytPlayerRef.current
+      if (!p) return
       if (isPlaying) {
-        sendYT('pauseVideo')
-        setIsPlaying(false)
+        try { p.pauseVideo(); setIsPlaying(false) } catch {}
       } else {
-        sendYT('playVideo')
-        setIsPlaying(true)
-        setFailed(false)
+        try { p.playVideo(); setIsPlaying(true); setFailed(false) } catch { setFailed(true) }
       }
       return
     }
@@ -96,12 +186,12 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
 
   const toggleMute = () => {
     if (isYT) {
+      const p = ytPlayerRef.current
+      if (!p) return
       if (isMuted) {
-        sendYT('unMute')
-        setIsMuted(false)
+        try { p.unMute(); p.setVolume((cfg.volume ?? 0.35) * 100); setIsMuted(false) } catch {}
       } else {
-        sendYT('mute')
-        setIsMuted(true)
+        try { p.mute(); setIsMuted(true) } catch {}
       }
       return
     }
@@ -116,24 +206,10 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange }) {
   return (
     <>
       {isYT ? (
-        <iframe
-          ref={ytRef}
-          title="YouTube music player"
-          width="1"
-          height="1"
-          src={`https://www.youtube.com/embed/${ytId}?enablejsapi=1&autoplay=0&loop=1&playlist=${ytId}&controls=0&rel=0&modestbranding=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
-          allow="autoplay; encrypted-media"
-          allowFullScreen={false}
-          style={{ position: 'fixed', width: 1, height: 1, left: -10, top: -10, opacity: 0, pointerEvents: 'none', border: 0 }}
-          onLoad={() => {
-            if (shouldPlay) {
-              setTimeout(() => {
-                sendYT('setVolume', [(cfg.volume ?? 0.35) * 100])
-                sendYT('playVideo')
-                setIsPlaying(true)
-              }, 500)
-            }
-          }}
+        <div
+          ref={ytContainerRef}
+          style={{ position: 'fixed', width: 1, height: 1, left: -10, top: -10, opacity: 0, pointerEvents: 'none', overflow: 'hidden' }}
+          aria-hidden
         />
       ) : (
         <audio

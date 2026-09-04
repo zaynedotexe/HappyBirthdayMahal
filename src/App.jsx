@@ -24,6 +24,7 @@ export default function App() {
   const [celebrating, setCelebrating] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
   const [musicPlaying, setMusicPlaying] = useState(false)
+  const [musicTime, setMusicTime] = useState(0)
 
   useEffect(() => {
     if (!entered) document.body.style.overflow = 'hidden'
@@ -93,7 +94,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <SyncedLyrics shouldPlay={entered} isPlaying={musicPlaying} />
+      <SyncedLyrics shouldPlay={entered} isPlaying={musicPlaying} currentTime={musicTime} />
 
       <div aria-hidden style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden', opacity: entered ? 1 : 0, transition: 'opacity 1s ease' }}>
         {[...Array(10)].map((_, i) => (
@@ -230,7 +231,7 @@ export default function App() {
       </motion.div>
 
       <PhotoViewer photos={siteConfig.photos} index={viewerIndex} onClose={() => setViewerIndex(null)} onNext={nextPhoto} onPrev={prevPhoto} />
-      <MusicPlayer shouldPlay={entered} onPlayingChange={setMusicPlaying} />
+      <MusicPlayer shouldPlay={entered} onPlayingChange={setMusicPlaying} onTimeUpdate={setMusicTime} />
 
       <AnimatePresence>
         {celebrating && showConfetti && (
