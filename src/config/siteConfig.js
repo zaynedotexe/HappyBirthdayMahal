@@ -79,10 +79,10 @@ const siteConfig = {
     {
       id: 1,
       image: BASE + "photos/photo1.jpg",
-      caption: "Our favorite memory ❤️",
+      caption: "My hijab princess 🥺❤️",
       date: "2026 • First memory",
       description:
-        "One of my favorite moments with you. Nothing fancy, just us being us — and it was perfect.",
+        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile — simple lang pero you still slay so hard. My favorite pretty girl. 😭✨",
       x: "5%",
       y: "12%",
       width: "200px",
@@ -96,9 +96,10 @@ const siteConfig = {
     {
       id: 2,
       image: BASE + "photos/photo2.jpg",
-      caption: "Kabadingan era 😭",
+      caption: "Certified bading energy 😭🤪",
       date: "2026",
-      description: "Proof that we're both slightly insane. And I love it.",
+      description:
+        "Tongue out, eyes wide, pakiyot faces — your kabadingan is my favorite comedy show. Never change, my favorite bading! 🫶😂",
       x: "78%",
       y: "10%",
       width: "185px",
@@ -113,9 +114,10 @@ const siteConfig = {
     {
       id: 3,
       image: BASE + "photos/photo3.jpg",
-      caption: "Your smile = my favorite view",
+      caption: "Your pretty wink 🥺✨",
       date: "2026 • Random day",
-      description: "Automatic +100 happiness whenever you smile like this.",
+      description:
+        "That soft smile and little wink? Instant kilig. You're so pretty, Mahal, sobra. Automatic +1000 happiness. 😭❤️",
       x: "82%",
       y: "48%",
       width: "175px",
@@ -129,9 +131,10 @@ const siteConfig = {
     {
       id: 4,
       image: BASE + "photos/photo4.jpg",
-      caption: "Simply you. ❤️",
+      caption: "Simply you, no filter 💖",
       date: "2026",
-      description: "No filter needed. You just glow differently.",
+      description:
+        "No filter, no effort — you just glow differently. Natural beauty, Mahal. Ang ganda mo palagi. ✨🥺",
       x: "4%",
       y: "55%",
       width: "190px",
@@ -145,9 +148,10 @@ const siteConfig = {
     {
       id: 5,
       image: BASE + "photos/photo5.jpg",
-      caption: "More memories to come ✨",
+      caption: "My glasses cutie 🌟🤓",
       date: "Today • Your birthday",
-      description: "Cheers to all the birthdays we'll celebrate together.",
+      description:
+        "Glasses on, pout on, starry background — you still shine the brightest. My cutie today and always. Cheers to your birthday! 🎂❤️",
       x: "12%",
       y: "75%",
       width: "170px",
@@ -161,9 +165,10 @@ const siteConfig = {
     {
       id: 6,
       image: BASE + "photos/photo6.jpg",
-      caption: "My favorite bading 🫵😭",
+      caption: "My cap baddie 😎🫶",
       date: "2026 • Late night talks",
-      description: "3am talks, endless laughs, and you still being bading. Perfect.",
+      description:
+        "Cap on, pout mode on — still my favorite bading. Late-night starry vibes hit different with you. 3am talks forever? 😭❤️",
       x: "75%",
       y: "76%",
       width: "180px",
@@ -181,56 +186,56 @@ const siteConfig = {
     {
       id: 1,
       image: BASE + "photos/photo1.jpg",
-      title: "That Random Day",
-      date: "2026 • February",
+      title: "My hijab princess 🥺❤️",
+      date: "2026 • First memory",
       description:
-        "Nothing special was supposed to happen that day, but somehow it became one of my favorite memories. Because you were there.",
-      funnyCaption: "Walang plano, pero naging core memory. 😭",
+        "Ang ganda mo dito, Mahal. Hijab + glasses + that soft smile — simple lang pero you still slay so hard. My favorite pretty girl.",
+      funnyCaption: "Hijab slay, no effort. 😭✨",
     },
     {
       id: 2,
       image: BASE + "photos/photo2.jpg",
-      title: "Our Kabadingan Era 😭",
-      date: "2026 • Summer",
+      title: "Certified bading energy 😭🤪",
+      date: "2026",
       description:
-        "Proof that we're both slightly insane. From weird voices to endless tawanan — I wouldn't have it any other way.",
-      funnyCaption: "Certified bading since day one.",
+        "Tongue out, eyes wide, pakiyot faces — your kabadingan is my favorite comedy show. Never change, my favorite bading!",
+      funnyCaption: "Bading since birth, certified. 😂",
     },
     {
       id: 3,
       image: BASE + "photos/photo3.jpg",
-      title: "Late Night Talks",
-      date: "2026 • Almost every night",
+      title: "Your pretty wink 🥺✨",
+      date: "2026 • Random day",
       description:
-        "Yung akala mo saglit lang, yun pala 3am na. We can talk about everything and nothing, and it's always the best part of my day.",
-      funnyCaption: "Goodnight? More like good morning na. 😭",
+        "That soft smile and little wink? Instant kilig. You're so pretty, Mahal, sobra. Automatic +1000 happiness.",
+      funnyCaption: "One wink, I'm done. 🥺",
     },
     {
       id: 4,
       image: BASE + "photos/photo4.jpg",
-      title: "Your Birthday Last Year",
+      title: "Simply you, no filter 💖",
       date: "2026",
       description:
-        "Seeing you happy on your day made me realize how much joy you bring to everyone around you. Lalo na sa akin.",
-      funnyCaption: "Still bading, still beautiful. ✨",
+        "No filter, no effort — you just glow differently. Natural beauty, Mahal. Ang ganda mo palagi.",
+      funnyCaption: "No filter needed, glow natural. ✨",
     },
     {
       id: 5,
       image: BASE + "photos/photo5.jpg",
-      title: "The Little Things",
-      date: "Every day",
+      title: "My glasses cutie 🌟🤓",
+      date: "Today • Your birthday",
       description:
-        "Your random 'kumain ka na?' texts, your silly selfies, your big laugh — all the small things that mean everything to me.",
-      funnyCaption: "Small things, big kilig. 🥺",
+        "Glasses on, pout on, starry background — you still shine the brightest. My cutie today and always.",
+      funnyCaption: "Starry cutie unlocked. 🌟",
     },
     {
       id: 6,
       image: BASE + "photos/photo6.jpg",
-      title: "Today — Your Day 🎂",
-      date: "2026 • Today",
+      title: "My cap baddie 😎🫶",
+      date: "2026 • Late night talks",
       description:
-        "And now we add another chapter. Happy birthday, Mahal. Here's to more adventures, more kulitan, more us.",
-      funnyCaption: "Chapter: Bading Year Unlocked 🎉",
+        "Cap on, pout mode on — still my favorite bading. Late-night starry vibes hit different with you.",
+      funnyCaption: "Cap on, still pretty. 😎",
     },
   ],
 
