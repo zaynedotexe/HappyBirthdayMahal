@@ -5,10 +5,16 @@ import marilagLyrics from '../data/lyrics.js'
 export default function SyncedLyrics({ shouldPlay, isPlaying, currentTime: propTime }) {
   const [internalTime, setInternalTime] = useState(0)
   const [activeIndex, setActiveIndex] = useState(-1)
-  const currentTime = propTime != null ? propTime : internalTime
+  const hasYTTime = propTime != null && propTime > 0.3
+  const currentTime = hasYTTime ? propTime : internalTime
 
   useEffect(() => {
-    if (propTime != null) return
+    if (propTime != null && propTime > 0.3) {
+      setInternalTime(propTime)
+    }
+  }, [propTime])
+
+  useEffect(() => {
     if (!shouldPlay || !isPlaying) return
     let raf
     let start = Date.now() - internalTime * 1000
@@ -18,13 +24,16 @@ export default function SyncedLyrics({ shouldPlay, isPlaying, currentTime: propT
         start = Date.now()
         setInternalTime(0)
       } else {
-        setInternalTime(elapsed)
+        setInternalTime((prev) => {
+          if (hasYTTime) return prev
+          return elapsed
+        })
       }
       raf = requestAnimationFrame(tick)
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [shouldPlay, isPlaying, propTime, internalTime])
+  }, [shouldPlay, isPlaying, internalTime, hasYTTime])
 
   useEffect(() => {
     if (!shouldPlay) {

@@ -36,10 +36,11 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange, onTimeUpdate 
     audio.loop = true
   }, [cfg.volume, cfg.enabled, isYT])
 
+  const ytTimeIntervalRef = useRef(null)
+
   useEffect(() => {
     if (!isYT || !cfg.enabled) return
     let cancelled = false
-    let timeInterval = null
 
     function createPlayer() {
       if (cancelled) return
@@ -79,7 +80,8 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange, onTimeUpdate 
           },
         },
       })
-      timeInterval = setInterval(() => {
+      if (ytTimeIntervalRef.current) clearInterval(ytTimeIntervalRef.current)
+      ytTimeIntervalRef.current = setInterval(() => {
         if (ytPlayerRef.current && ytPlayerRef.current.getCurrentTime) {
           try {
             const t = ytPlayerRef.current.getCurrentTime()
@@ -103,13 +105,13 @@ export default function MusicPlayer({ shouldPlay, onPlayingChange, onTimeUpdate 
       return () => {
         cancelled = true
         clearInterval(check)
-        if (timeInterval) clearInterval(timeInterval)
+        if (ytTimeIntervalRef.current) clearInterval(ytTimeIntervalRef.current)
       }
     } else {
       createPlayer()
       return () => {
         cancelled = true
-        if (timeInterval) clearInterval(timeInterval)
+        if (ytTimeIntervalRef.current) clearInterval(ytTimeIntervalRef.current)
       }
     }
   }, [isYT, cfg.enabled, ytId, cfg.volume, shouldPlay, onTimeUpdate])
