@@ -16,7 +16,7 @@ export default function Timeline({ items }) {
 
         <div style={{ maxWidth: 680, margin: '0 auto', position: 'relative', paddingLeft: 36 }}>
 
-          <div style={{ position: 'absolute', left: 15, top: 8, bottom: 8, width: 2, background: 'linear-gradient(180deg, #fecdd3, #f9a8d4, #e11d48)', borderRadius: 999, opacity: 0.9 }} />
+          <div style={{ position: 'absolute', left: 16, top: 8, bottom: 8, width: 2, background: 'linear-gradient(180deg, #fecdd3, #f9a8d4, #e11d48)', borderRadius: 999, opacity: 0.9 }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
             {items.map((it, i) => (
@@ -40,7 +40,7 @@ export default function Timeline({ items }) {
                 <span
                   style={{
                     position: 'absolute',
-                    left: -36,
+                    left: -30,
                     top: 22,
                     width: 20,
                     height: 20,
