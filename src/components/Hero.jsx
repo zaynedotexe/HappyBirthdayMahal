@@ -47,7 +47,7 @@ export default function Hero({ config }) {
           className="font-display"
           style={{ fontSize: 'clamp(44px, 8vw, 78px)', fontWeight: 700, lineHeight: 0.95, letterSpacing: '-0.03em', color: '#1f0a14', marginBottom: 18 }}
         >
-          Happy <span className="gradient-text">Birthday!</span>
+          Happy <span className="gradient-text">Birthday!</span> <span style={{ display: 'inline-block', transform: 'rotate(6deg)' }}>🎂</span>
         </motion.h2>
 
         <motion.div
