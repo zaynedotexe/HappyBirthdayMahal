@@ -321,11 +321,11 @@ const siteConfig = {
 
   music: {
     enabled: true,
-    source: "/music/birthday-song.mp3",
-
+    source: "https://www.youtube.com/watch?v=bD9whtdq7dw",
+    youtubeId: "bD9whtdq7dw",
     fallback: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-114227.mp3",
     volume: 0.35,
-    title: "Our Song ♡",
+    title: "Marilag - Dionela ♡",
   },
 
   theme: {

@@ -2,24 +2,48 @@ import { useEffect, useRef, useState } from 'react'
 import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import siteConfig from '../config/siteConfig'
 
+function getYouTubeId(url) {
+  if (!url) return null
+  if (url.includes('youtu.be/')) return url.split('youtu.be/')[1].split(/[?&#]/)[0]
+  if (url.includes('youtube.com/watch')) {
+    try { return new URL(url).searchParams.get('v') } catch { return null }
+  }
+  if (url.includes('youtube.com/embed/')) return url.split('embed/')[1].split(/[?&#]/)[0]
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) return url
+  return null
+}
+
 export default function MusicPlayer({ shouldPlay }) {
   const audioRef = useRef(null)
+  const ytRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [failed, setFailed] = useState(false)
-
   const cfg = siteConfig.music
+  const ytId = cfg.youtubeId || getYouTubeId(cfg.source)
+  const isYT = !!ytId && (cfg.source?.includes('youtu') || cfg.youtubeId)
 
   useEffect(() => {
     if (!cfg.enabled) return
+    if (isYT) return
     const audio = audioRef.current
     if (!audio) return
     audio.volume = cfg.volume ?? 0.35
     audio.loop = true
-  }, [cfg.volume, cfg.enabled])
+  }, [cfg.volume, cfg.enabled, isYT])
 
   useEffect(() => {
     if (!cfg.enabled || !shouldPlay) return
+    if (isYT) {
+      const t = setTimeout(() => {
+        sendYT('playVideo')
+        sendYT('setVolume', [(cfg.volume ?? 0.35) * 100])
+        if (isMuted) sendYT('mute')
+        else sendYT('unMute')
+        setIsPlaying(true)
+      }, 800)
+      return () => clearTimeout(t)
+    }
     const audio = audioRef.current
     if (!audio) return
     const tryPlay = async () => {
@@ -32,9 +56,26 @@ export default function MusicPlayer({ shouldPlay }) {
       }
     }
     tryPlay()
-  }, [shouldPlay, cfg.enabled])
+  }, [shouldPlay, cfg.enabled, isYT, cfg.volume, isMuted])
+
+  function sendYT(func, args = []) {
+    const iframe = ytRef.current
+    if (!iframe || !iframe.contentWindow) return
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args }), '*')
+  }
 
   const togglePlay = async () => {
+    if (isYT) {
+      if (isPlaying) {
+        sendYT('pauseVideo')
+        setIsPlaying(false)
+      } else {
+        sendYT('playVideo')
+        setIsPlaying(true)
+        setFailed(false)
+      }
+      return
+    }
     const audio = audioRef.current
     if (!audio) return
     if (isPlaying) {
@@ -52,6 +93,16 @@ export default function MusicPlayer({ shouldPlay }) {
   }
 
   const toggleMute = () => {
+    if (isYT) {
+      if (isMuted) {
+        sendYT('unMute')
+        setIsMuted(false)
+      } else {
+        sendYT('mute')
+        setIsMuted(true)
+      }
+      return
+    }
     const audio = audioRef.current
     if (!audio) return
     audio.muted = !isMuted
@@ -62,22 +113,43 @@ export default function MusicPlayer({ shouldPlay }) {
 
   return (
     <>
-      <audio
-        ref={audioRef}
-        src={cfg.source}
-        preload="none"
-        onError={() => {
-
-          if (audioRef.current && cfg.fallback && audioRef.current.src !== cfg.fallback) {
-            audioRef.current.src = cfg.fallback
-            audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setFailed(true))
-          } else {
-            setFailed(true)
-          }
-        }}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      />
+      {isYT ? (
+        <iframe
+          ref={ytRef}
+          title="YouTube music player"
+          width="1"
+          height="1"
+          src={`https://www.youtube.com/embed/${ytId}?enablejsapi=1&autoplay=0&loop=1&playlist=${ytId}&controls=0&rel=0&modestbranding=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen={false}
+          style={{ position: 'fixed', width: 1, height: 1, left: -10, top: -10, opacity: 0, pointerEvents: 'none', border: 0 }}
+          onLoad={() => {
+            if (shouldPlay) {
+              setTimeout(() => {
+                sendYT('setVolume', [(cfg.volume ?? 0.35) * 100])
+                sendYT('playVideo')
+                setIsPlaying(true)
+              }, 500)
+            }
+          }}
+        />
+      ) : (
+        <audio
+          ref={audioRef}
+          src={cfg.source}
+          preload="none"
+          onError={() => {
+            if (audioRef.current && cfg.fallback && audioRef.current.src !== cfg.fallback) {
+              audioRef.current.src = cfg.fallback
+              audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setFailed(true))
+            } else {
+              setFailed(true)
+            }
+          }}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      )}
 
       <div
         style={{
@@ -98,7 +170,7 @@ export default function MusicPlayer({ shouldPlay }) {
         }}
       >
         <Music size={14} color="#e11d48" />
-        <span style={{ fontSize: 12, fontWeight: 800, color: '#4a1020', letterSpacing: '0.02em', maxWidth: 90, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <span style={{ fontSize: 12, fontWeight: 800, color: '#4a1020', letterSpacing: '0.02em', maxWidth: 110, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {cfg.title}
         </span>
         <span style={{ width: 1, height: 18, background: '#ffe4e6' }} />
@@ -140,7 +212,7 @@ export default function MusicPlayer({ shouldPlay }) {
         </button>
       </div>
 
-      {failed && !isPlaying && shouldPlay && (
+      {failed && !isPlaying && shouldPlay && !isYT && (
         <div
           style={{
             position: 'fixed',
