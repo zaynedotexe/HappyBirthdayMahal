@@ -3,6 +3,8 @@
 // This is the ONLY file you need to personalize the website
 // ============================================================
 
+const BASE = import.meta.env.BASE_URL || "/"
+
 const siteConfig = {
   // --- Basic Info ---
   name: "Mahal",
@@ -76,10 +78,9 @@ const siteConfig = {
   photos: [
     {
       id: 1,
-      image:
-        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo1.jpg",
       caption: "Our favorite memory ❤️",
-      date: "2025 • First gala together",
+      date: "2026 • First memory",
       description:
         "One of my favorite moments with you. Nothing fancy, just us being us — and it was perfect.",
       x: "5%",
@@ -94,10 +95,9 @@ const siteConfig = {
     },
     {
       id: 2,
-      image:
-        "https://images.unsplash.com/photo-1516589177381-26e8a5690151?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo2.jpg",
       caption: "Kabadingan era 😭",
-      date: "2025",
+      date: "2026",
       description: "Proof that we're both slightly insane. And I love it.",
       x: "78%",
       y: "10%",
@@ -112,8 +112,7 @@ const siteConfig = {
     },
     {
       id: 3,
-      image:
-        "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo3.jpg",
       caption: "Your smile = my favorite view",
       date: "2026 • Random day",
       description: "Automatic +100 happiness whenever you smile like this.",
@@ -129,8 +128,7 @@ const siteConfig = {
     },
     {
       id: 4,
-      image:
-        "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo4.jpg",
       caption: "Simply you. ❤️",
       date: "2026",
       description: "No filter needed. You just glow differently.",
@@ -146,8 +144,7 @@ const siteConfig = {
     },
     {
       id: 5,
-      image:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo5.jpg",
       caption: "More memories to come ✨",
       date: "Today • Your birthday",
       description: "Cheers to all the birthdays we'll celebrate together.",
@@ -163,10 +160,9 @@ const siteConfig = {
     },
     {
       id: 6,
-      image:
-        "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo6.jpg",
       caption: "My favorite bading 🫵😭",
-      date: "2025 • Late night talks",
+      date: "2026 • Late night talks",
       description: "3am talks, endless laughs, and you still being bading. Perfect.",
       x: "75%",
       y: "76%",
@@ -184,48 +180,43 @@ const siteConfig = {
   memories: [
     {
       id: 1,
-      image:
-        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo1.jpg",
       title: "That Random Day",
-      date: "2025 • February",
+      date: "2026 • February",
       description:
         "Nothing special was supposed to happen that day, but somehow it became one of my favorite memories. Because you were there.",
       funnyCaption: "Walang plano, pero naging core memory. 😭",
     },
     {
       id: 2,
-      image:
-        "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo2.jpg",
       title: "Our Kabadingan Era 😭",
-      date: "2025 • Summer",
+      date: "2026 • Summer",
       description:
         "Proof that we're both slightly insane. From weird voices to endless tawanan — I wouldn't have it any other way.",
       funnyCaption: "Certified bading since day one.",
     },
     {
       id: 3,
-      image:
-        "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo3.jpg",
       title: "Late Night Talks",
-      date: "2025 • Almost every night",
+      date: "2026 • Almost every night",
       description:
         "Yung akala mo saglit lang, yun pala 3am na. We can talk about everything and nothing, and it's always the best part of my day.",
       funnyCaption: "Goodnight? More like good morning na. 😭",
     },
     {
       id: 4,
-      image:
-        "https://images.unsplash.com/photo-1516589177381-26e8a5690151?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo4.jpg",
       title: "Your Birthday Last Year",
-      date: "2025",
+      date: "2026",
       description:
         "Seeing you happy on your day made me realize how much joy you bring to everyone around you. Lalo na sa akin.",
       funnyCaption: "Still bading, still beautiful. ✨",
     },
     {
       id: 5,
-      image:
-        "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo5.jpg",
       title: "The Little Things",
       date: "Every day",
       description:
@@ -234,8 +225,7 @@ const siteConfig = {
     },
     {
       id: 6,
-      image:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=60",
+      image: BASE + "photos/photo6.jpg",
       title: "Today — Your Day 🎂",
       date: "2026 • Today",
       description:
